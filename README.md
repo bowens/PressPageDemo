@@ -36,13 +36,20 @@ when hovered over.
 ## How to run this application's tests
 * Jest unit tests are run via `npm run jest`
 * Cypress end-to-end tests are run via `npm run cypress`
-    * In order for Cypress tests to run the application must be available and running at localhost:8000
+    * Cypress defaults to 'http://localhost:8000' for its tests. This can be overriden with the CYPRESS_HOST_URL
+      environment variable like so (do not include any trailling
+      slashes): `CYPRESS_HOST_URL='https://example.org' npm run cypress`
+
+## How to start this application
+
+For testing and development I recommend using Symfony's CLI application for its built in web server. It can be started
+with the command `symfony server:start`. For production use this can be configured like any other Symfony application
+using your choice of Apache, nginx, Caddy, etc.
 
 ## How to use this application
 
-Once the application has been built the Symfony CLI is recommended for its builtin webserver. Begin by
-running `symfony server:start` in a terminal, and in a browser navigate
-to [http:/localhost:8000](http://localhost:8000).
+Begin by navigating your browser to your configured webserver. If you are using the Symfony CLI this will be
+at [http:/localhost:8000](http://localhost:8000).
 
 The homepage is a simple corporate logo with a greeting header, followed by a button linking to
 the [/users](http://localhost:8000/users) page.
@@ -61,7 +68,6 @@ storage cache; this must be done manually in the browser developer tools by runn
 ## Todo / unimplemented features
 * This application is not yet translatable.
 * Users cached data does not have a user-friendly method of being cleared.
-* Cypress E2E tests assume the application is hosted at localhost on port 8000.
 * While the frontend uses a simple responsive design it has not yet been verified to work on mobile browsers such as
   iOS/Safari.
 * There is presently no WAI-ARIA support, and it has not yet been tested with JAWS, NVDA, or any other screen readers.

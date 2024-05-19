@@ -1,7 +1,8 @@
 describe('PagePress Demo users page', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:8000/users');
+        const url = Cypress.env('HOST_URL') || 'http://localhost:8000';
+        cy.visit(url + '/users');
     });
 
     it('Should have the correct page title', () => {
