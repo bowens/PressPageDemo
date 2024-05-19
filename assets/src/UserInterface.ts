@@ -6,6 +6,7 @@ interface User {
     id: number;
     avatar_url: string;
     html_url: string;
+    display_in_pp_demo?: boolean;
 }
 
 export default User;

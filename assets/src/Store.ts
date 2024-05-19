@@ -9,8 +9,9 @@ interface UserState {
     users: UserInterface[];
     deletedUsers: UserInterface[];
     fetchUsersURL: () => string;
-    fetchUsers: () => Promise<Response>
+    fetchUsers: () => Promise<Response>;
     deleteUser: (userID: number) => void;
+    usersToDisplayCount: number;
 }
 
 // Item keys for localStorage addresses
@@ -33,19 +34,40 @@ const useUserStore = create<UserState>()((set, get) => ({
     // Fetches users, both for the initial batch and when paginating. Once ran it will update localStorage's
     // next-users-API-URL setting.
     fetchUsers: async () => {
-        const { fetchUsersURL } = get();
+        const { users, fetchUsersURL, usersToDisplayCount } = get();
 
+        // Not all users are displayed immediately. In case some users lack the display_in_pp_demo attribute we are
+        // going to simply grant that attribute and return an empty Promise. First ensure the array is not empty...
+        if (users.length > 0) {
+            let startIndex = users.findIndex((obj) => !('display_in_pp_demo' in obj));
+            // Don't continue unless there's items to process.
+            if (-1 !== startIndex) {
+                for (let i = startIndex; i < startIndex + usersToDisplayCount && i < users.length; i++) {
+                    users[i]["display_in_pp_demo"] = true;
+                }
+
+                set((state) => {
+                    localStorage.setItem(usersLocalStorageKey, JSON.stringify(users));
+                    return {
+                        users: users
+                    };
+                });
+
+                return new Response;
+            }
+        }
+
+        // There are no users already loaded for us to mark visible so let's continue with the XHR fetch:
         const response = await fetch(fetchUsersURL());
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data: UserInterface[] = await response.json();
 
-        const linkHeader = response.headers.get('Link');
-        let nextUrl = null;
-
         // GitHub's API handles pagination through an HTTP response header pointing to the next 'page'
         // by means of adding ?since=(last-user-id-of-the-last-request)
+        const linkHeader = response.headers.get('Link');
+        let nextUrl = null;
         if (linkHeader) {
             const links = linkHeader.split(',').reduce((acc, link) => {
                 const [url, rel] = link.split(';').map(s => s.trim());
@@ -59,7 +81,13 @@ const useUserStore = create<UserState>()((set, get) => ({
         }
 
         set((state) => {
-            const updatedUsers = [...state.users, ...data];
+            let updatedUsers = [...state.users, ...data];
+
+            let startIndex = updatedUsers.findIndex((obj) => !('display_in_pp_demo' in obj));
+            for (let i = startIndex; i < startIndex + usersToDisplayCount && i < updatedUsers.length; i++) {
+                updatedUsers[i]["display_in_pp_demo"] = true;
+            }
+
             localStorage.setItem(usersLocalStorageKey, JSON.stringify(updatedUsers));
             localStorage.setItem(APIEndpointURLKey, nextUrl);
             return {
@@ -89,7 +117,9 @@ const useUserStore = create<UserState>()((set, get) => ({
                 deletedUsers: updatedDeletedUsers
             };
         });
-    }
+    },
+
+    usersToDisplayCount: 10
 }));
 
 
