@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    {{ encore_entry_link_tags('Tailwind') }}
 {% endblock %}
 
 {% block javascripts %}
@@ -10,6 +11,5 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-3xl font-bold underline">JS content follows:</h1>
     <div id="pp-demo-root"></div>
 {% endblock %}

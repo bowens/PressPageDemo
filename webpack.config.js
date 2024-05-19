@@ -21,9 +21,15 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('UsersPage', '/assets/UsersPage.tsx')
+    .addEntry('UsersPage', './assets/UsersPage.tsx')
+    .addStyleEntry('Tailwind', './assets/styles/tailwind.css')
 
-    .enablePostCssLoader()
+    .enablePostCssLoader((options) => {
+        // new option outlined here https://webpack.js.org/loaders/postcss-loader/
+        options.postcssOptions = {
+            config: './postcss.config.js',
+        }
+    })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

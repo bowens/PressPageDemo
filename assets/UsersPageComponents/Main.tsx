@@ -1,8 +1,10 @@
-import { FC } from 'react'
+import { FC } from 'react';
+
+import UserList from './UserList';
 
 const Main: FC = () => {
     return (
-        <div>React &amp; TypeScript are working</div>
+        <UserList />
     );
 };
 
