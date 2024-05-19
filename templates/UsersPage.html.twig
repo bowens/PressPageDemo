@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}PressPage Demo - Users{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('Tailwind') }}
@@ -11,5 +13,11 @@
 {% endblock %}
 
 {% block body %}
+    <div class="flex w-screen justify-between mb-5 bg-amber-700 text-white p-3 items-center">
+        <a href="/" class="underline">Homepage</a>
+        <div class="w-full text-center">
+            <h2 class="text-3xl">Viewing users from GitHub</h2>
+        </div>
+    </div>
     <div id="pp-demo-root"></div>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PressPage Demo - Home{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('Tailwind') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="flex h-screen justify-center content-center items-center flex-col">
+        <h1 class="text-4xl">Welcome to PressPage demo homepage!</h1>
+        <img id='homepage-logo'
+             src="{{ asset('logo.jpg') }}"
+             alt="Demo Logo"
+             title="Demo Logo"
+             style="height: 250px;"
+             class="max-w content-center items-center mt-4 "/>
+        <a id="homepage-link-to-users"
+           class="mt-10 mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+           href="/users">
+            View Github Users
+        </a>
+    </div>
+{% endblock %}

@@ -5,7 +5,7 @@ describe('PagePress Demo users page', () => {
     });
 
     it('Should have the correct page title', () => {
-        cy.title().should('include', 'Welcome to the PP');
+        cy.title().should('include', 'PressPage Demo - Users');
     });
 
     it('Should display ten users initially', () => {

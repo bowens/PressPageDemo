@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class UsersController extends AbstractController
+class HomeController extends AbstractController
 {
-    #[Route('/users', name: 'users')]
+    #[Route('/', name: 'home')]
     public function index(): Response
     {
-        return $this->render('UsersPage.html.twig', []);
+        return $this->render('HomePage.html.twig', []);
     }
 }
