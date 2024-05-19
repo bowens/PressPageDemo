@@ -16,6 +16,8 @@ const UserCard: FC<Props> = ({ user }) => {
                         rounded
                         shadow-lg
                         p-2
+                        min-w-40
+                        min-h-40
                         border
                         m-2
                         group
