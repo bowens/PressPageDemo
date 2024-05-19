@@ -19,7 +19,9 @@ const UserName: FC<Props> = ({ user }) => {
                         flex
                         items-center
                         justify-center">
-            { user.login }
+            <a href={ user.html_url } title={ "View " + user.login + ' on GitHub' } target="_blank" className="underline text-blue-700">
+                { user.login }
+            </a>
         </div>
     );
 };
