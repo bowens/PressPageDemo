@@ -26,7 +26,6 @@ when hovered over.
 * PHP 8.2 or higher is required to run the Symfony server along with the following extensions: ctype, iconv, PCRE,
   Session, SimpleXML, and Tokenizer. If you are unsure but have the Symfony CLI program installed you can verify by
   running `symfony check:requriments` in a terminal.
-* Port 8000 must be free (this is not yet configurable).
 
 ## How to build this application
 * Install PHP dependencies: `composer install`
