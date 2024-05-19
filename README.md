@@ -34,6 +34,7 @@ when hovered over.
 * Build the JS source: `npm run dev`
 
 ## How to run this application's tests
+* ESLint tests are run via `npm run eslint`
 * Jest unit tests are run via `npm run jest`
 * Cypress end-to-end tests are run via `npm run cypress`
     * Cypress defaults to 'http://localhost:8000' for its tests. This can be overriden with the CYPRESS_HOST_URL
