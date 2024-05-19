@@ -16,7 +16,7 @@ const LoadMoreUsers: FC = () => {
             .then(() => { setLoading(false); })
     };
 
-    const regularClassName = "mt-10 mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full";
+    const regularClassName = "pp-demo-LoadMoreUsers mt-10 mb-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full";
     const loadingClassName = "mt-10 mb-5 bg-gray-200 text-black font-bold py-2 px-4 rounded-full";
 
     return (

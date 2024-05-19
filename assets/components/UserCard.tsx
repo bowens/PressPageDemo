@@ -11,7 +11,7 @@ interface Props {
 
 const UserCard: FC<Props> = ({ user }) => {
     return (
-        <div className="bg-white rounded shadow-lg p-2 border m-2 group relative">
+        <div className="pp-demo-UserCard bg-white rounded shadow-lg p-2 border m-2 group relative">
             <div className="group relative">
                 <UserAvatar user={ user } />
                 <DeleteUserButton user={ user } />

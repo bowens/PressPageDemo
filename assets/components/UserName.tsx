@@ -8,7 +8,7 @@ interface Props {
 
 const UserName: FC<Props> = ({ user }) => {
     return (
-        <div className="text-center text-base">{ user.login }</div>
+        <div className="pp-demo-UserName text-center text-base">{ user.login }</div>
     );
 };
 

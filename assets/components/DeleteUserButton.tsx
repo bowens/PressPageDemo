@@ -23,7 +23,7 @@ const DeleteUserButton: FC<Props> = ({ user }) => {
                         text-white
                         transition-opacity
                         duration-500">
-            <a className="hover:cursor-pointer rounded p-1 m-1 border-2 border-white" onClick={ () => deleteUser(user.id) }>
+            <a className="pp-demo-DeleteUserButton hover:cursor-pointer rounded p-1 m-1 border-2 border-white" onClick={ () => deleteUser(user.id) }>
                 Delete user
             </a>
         </div>
