@@ -1,21 +1,13 @@
 import create from 'zustand';
 
-/**
- * The User type itself, as defined by GitHub's API
- */
-interface User {
-    login: string;
-    id: number;
-    avatar_url: string;
-    html_url: string;
-}
+import UserInterface from "./UserInterface";
 
 /**
  * The application status
  */
 interface UserState {
-    users: User[];
-    deletedUsers: User[];
+    users: UserInterface[];
+    deletedUsers: UserInterface[];
     fetchUsersURL: () => string;
     fetchUsers: () => void;
     deleteUser: (userID: number) => void;
@@ -45,7 +37,7 @@ const useUserStore = create<UserState>((set, get) => ({
         const { fetchUsersURL } = get();
 
         const response = await fetch(fetchUsersURL());
-        const data: User[] = await response.json();
+        const data: UserInterface[] = await response.json();
 
         const linkHeader = response.headers.get('Link');
         let nextUrl = null;
