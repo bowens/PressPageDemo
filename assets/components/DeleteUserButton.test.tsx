@@ -6,7 +6,7 @@ import DeleteUserButton from './DeleteUserButton';
 import UserData from '../src/UserData';
 
 describe('<DeleteUserButton/>', () => {
-    it('renders the Delete User button with the correct props', () => {
+    it('renders the Delete User button', () => {
         render(<DeleteUserButton user={ UserData } />);
         expect(screen.getByText('Delete user')).toBeInTheDocument();
     });
