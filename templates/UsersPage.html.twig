@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('UsersPage') }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold underline">JS content follows:</h1>
+    <div id="pp-demo-root"></div>
+{% endblock %}
