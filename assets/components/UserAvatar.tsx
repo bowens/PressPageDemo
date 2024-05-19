@@ -11,7 +11,8 @@ const UserAvatar: FC<Props> = ({ user }) => {
         <img className="h-40 w-auto object-cover"
              src={ user.avatar_url }
              alt={ user.login }
-             title={ user.login } />
+             title={ user.login }
+             loading="lazy"/>
     );
 };
 
