@@ -77,3 +77,17 @@ storage cache; this must be done manually in the browser developer tools by runn
   be made before GitHub's rate limiter takes effect.
 * Once a user has been removed via the "delete user" button there is no ability to undo their removal and reinsert them
   into the page.
+
+## Contributing
+
+If you wish to learn more about this application and how it is structured, I suggest looking in the following places:
+* /assets/UsersPage.tsx is the entry point for the React/TS application.
+* /assets/components/ contains the React application components and their unit tests.
+* /assets/src/ contains non-component elements (Zustand store, mock user data) of the React/TS application.
+* /cypress/e2e/ contains the Cypress test suite.
+* /src/Controller/ contains the two minimalist page controllers.
+* /templates/ contains the two minimalist page template.
+
+## License
+
+No license is assigned to this work, use or repurpose it as you wish.
