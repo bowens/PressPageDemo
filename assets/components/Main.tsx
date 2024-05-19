@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import UserList from './UserList';
 import LoadMoreUsers from "./LoadMoreUsers";
