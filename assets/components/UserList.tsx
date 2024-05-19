@@ -4,15 +4,7 @@ import useUserStore from '../src/Store';
 import UserCard from "./UserCard";
 
 const UserList: React.FC = () => {
-    const { users, fetchUsers } = useUserStore();
-
-    useEffect(() => {
-            if (0 === users.length) {
-                fetchUsers();
-            }
-        },
-        [ fetchUsers, users.length ]
-    );
+    const { users } = useUserStore();
 
     return (
         <div className="flex flex-wrap justify-center">

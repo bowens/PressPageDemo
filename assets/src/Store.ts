@@ -9,7 +9,7 @@ interface UserState {
     users: UserInterface[];
     deletedUsers: UserInterface[];
     fetchUsersURL: () => string;
-    fetchUsers: () => void;
+    fetchUsers: () => Promise<Response>
     deleteUser: (userID: number) => void;
 }
 
@@ -36,6 +36,9 @@ const useUserStore = create<UserState>()((set, get) => ({
         const { fetchUsersURL } = get();
 
         const response = await fetch(fetchUsersURL());
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data: UserInterface[] = await response.json();
 
         const linkHeader = response.headers.get('Link');
@@ -63,6 +66,8 @@ const useUserStore = create<UserState>()((set, get) => ({
                 users: updatedUsers
             };
         });
+
+        return response;
     },
 
     // Remove a user from the active users list and moves them to a deleted users list for a future undo feature
