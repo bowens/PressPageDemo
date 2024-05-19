@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import useUserStore from "./Store";
+import useUserStore from "../src/Store";
 
 const LoadMoreUsers: FC = () => {
     const { fetchUsers } = useUserStore();

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import useUserStore from "./Store";
-import UserInterface from "./UserInterface";
+import useUserStore from "../src/Store";
+import UserInterface from "../src/UserInterface";
 
 interface Props {
     user: UserInterface;

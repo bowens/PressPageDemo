@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
-import UserInterface from "./UserInterface";
+import UserInterface from "../src/UserInterface";
 import UserAvatar from "./UserAvatar";
 import DeleteUserButton from "./DeleteUserButton";
+import UserName from "./UserName";
 
 interface Props {
     user: UserInterface;
@@ -15,7 +16,7 @@ const UserCard: FC<Props> = ({ user }) => {
                 <UserAvatar user={ user } />
                 <DeleteUserButton user={ user } />
             </div>
-            <div className="text-center text-base">{ user.login }</div>
+            <UserName user={ user }/>
         </div>
     );
 };

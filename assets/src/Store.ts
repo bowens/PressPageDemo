@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import UserInterface from "./UserInterface";
 
@@ -18,8 +18,7 @@ const usersLocalStorageKey = 'pp-co-demo-users';
 const deletedUsersLocalStorageKey = 'pp-co-demo-deleted-users';
 const APIEndpointURLKey = 'pp-co-demo-api-endpoint';
 
-const useUserStore = create<UserState>((set, get) => ({
-
+const useUserStore = create<UserState>()((set, get) => ({
     // Returns users from localStorage if they exist
     users: JSON.parse(localStorage.getItem(usersLocalStorageKey) || '[]'),
 
@@ -87,5 +86,6 @@ const useUserStore = create<UserState>((set, get) => ({
         });
     }
 }));
+
 
 export default useUserStore;

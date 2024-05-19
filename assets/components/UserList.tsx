@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import useUserStore from './Store';
-import DeleteUserButton from "./DeleteUserButton";
-import UserAvatar from "./UserAvatar";
+
+import useUserStore from '../src/Store';
 import UserCard from "./UserCard";
 
 const UserList: React.FC = () => {
-    const { users, fetchUsers, deleteUser } = useUserStore();
+    const { users, fetchUsers } = useUserStore();
 
     useEffect(() => {
             if (0 === users.length) {

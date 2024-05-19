@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import UserInterface from "./UserInterface";
+import UserInterface from "../src/UserInterface";
 
 interface Props {
     user: UserInterface;
